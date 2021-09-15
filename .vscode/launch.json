@@ -1,18 +1,30 @@
 {
-    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
-    // 기존 특성에 대한 설명을 보려면 가리킵니다.
-    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
-    "version": "0.2.0",
-    "configurations": [
+    "tasks": [
         {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-            "args": [],
-            "preLaunchTask": "g++ build active file",
-            "stdio": [null, null, null],
-            "terminal": "integrated"
+            "type": "cppbuild",
+            "label": "C/C++: g++ 활성 파일 빌드",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${fileDirname}/*.cpp", // 디렉토리내 다른 파일도 포함하기 위함. 없으면 헤더 파일이 포함이 안됨
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-std=c++17", // 안붙이면 이전 버전으로 컴파일되는듯?
+                "&&", // 앞의 명령어가 성공하면
+                "${fileDirname}/${fileBasenameNoExtension}" //파일을 실행 , 빌드와 동시에 실행용...
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "컴파일러: /usr/bin/g++"
         }
-    ]
+    ],
+    "version": "2.0.0"
 }
