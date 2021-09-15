@@ -24,10 +24,43 @@
 좌석을 예약하시겠습니까?(y 또는n)
 */
 
-
 #include <stdio.h>
+#define Size 10
 
-int main(){
-    printf("test");
-    return 0;
+char seat_agree;
+int i, j = 0;
+int seat[10];
+
+int main(void){
+    printf("\n좌석을 예약하시겠습니까?(y 또는n) ");
+    while(1) {
+        //while문 안에 printf("\n좌석을 예약하시겠습니까?(y 또는n) ");를 넣으면 2번 반복됨. 이유를 모르겠어서 밖으로 뺌
+        scanf("%c", &seat_agree);
+        if (seat_agree == 'y')
+        {
+            printf("---------------------------------\n");
+            for(i = 0; i < Size; i++){
+                printf(" %d", i+1);
+            }
+            printf("\n---------------------------------\n");
+            for(i = 0; i < Size; i++){
+                printf(" %d", seat[i]);
+            }
+            printf("\n몇번째 좌석을 예약하시겠습니까");
+            scanf("%d", &j);
+            if(seat[j-1] != 0){
+                printf("이미 예약된 자리입니다.");
+                printf("\n좌석을 예약하시겠습니까?(y 또는n) ");
+            } else {
+                seat[j - 1] = 1;
+                printf("\n예약되었습니다.\n");
+                printf("\n좌석을 예약하시겠습니까?(y 또는n) ");
+            }
+        }
+        else if (seat_agree == 'n')
+        {
+            printf("예약 취소\n");
+            break;
+        }
+    }
 }
