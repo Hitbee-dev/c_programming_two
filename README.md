@@ -1,4 +1,5 @@
 # 한남대학교 C프로그래밍II 수업
+- [수업자료 -*Notion*](https://charm-aluminum-6c2.notion.site/C-2-2b62c8d09ffc4522800e7f551e7d99f8)
 
 ## 2022-09-14
 ### 극장 예약 시스템
